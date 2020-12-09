@@ -55,25 +55,6 @@ public interface MuleContext extends Lifecycle
    ServerNotificationManager getNotificationManager();
 
    /**
-    * Determines if the server has been started
-    */
-   boolean isStarted();
-
-   /**
-    * Determines if the server has been initialised
-    */
-   boolean isInitialised();
-
-   /**
-    * Determines if the server is being initialised
-    */
-   boolean isInitialising();
-
-   boolean isDisposed();
-
-   boolean isDisposing();
-
-   /**
     * Registers an intenal server event listener. The listener will be notified
     * when a particular event happens within the server. Typically this is not
     * an event in the same sense as an MuleEvent (although there is nothing
@@ -119,55 +100,9 @@ public interface MuleContext extends Lifecycle
     */
    void fireNotification(ServerNotification notification);
 
-   /**
-    * Sets the security manager used by this Mule instance to authenticate and
-    * authorise incoming and outgoing event traffic and service invocations
-    *
-    * @param securityManager the security manager used by this Mule instance to
-    *                        authenticate and authorise incoming and outgoing event traffic
-    *                        and service invocations
-    * @throws RegistrationException
-    */
-   void setSecurityManager(SecurityManager securityManager) throws InitialisationException, RegistrationException;
-
-   /**
-    * Gets the security manager used by this Mule instance to authenticate and
-    * authorise incoming and outgoing event traffic and service invocations
-    *
-    * @return he security manager used by this Mule instance to authenticate
-    *         and authorise incoming and outgoing event traffic and service
-    *         invocations
-    */
-   SecurityManager getSecurityManager();
-
-   /**
-    * Obtains a workManager instance that can be used to schedule work in a
-    * thread pool. This will be used primarially by Agents wanting to
-    * schedule work. This work Manager must <b>never</b> be used by provider
-    * implementations as they have their own workManager accible on the
-    * connector.
-    *
-    * @return a workManager instance used by the current MuleManager
-    */
-   WorkManager getWorkManager();
 
    WorkListener getWorkListener();
 
-   /**
-    * Sets the queue manager used by mule for queuing events. This is used for
-    * service queues
-    *
-    * @param queueManager
-    * @throws RegistrationException
-    *
-    */
-   void setQueueManager(QueueManager queueManager) throws RegistrationException;
-
-   /**
-    * Gets the queue manager used by mule for queuing events. This is used for
-    * service queues.
-    */
-   QueueManager getQueueManager();
 
    ObjectStoreManager getObjectStoreManager();
 
@@ -199,15 +134,6 @@ public interface MuleContext extends Lifecycle
 
    MuleConfiguration getConfiguration();
 
-   ThreadingProfile getDefaultMessageDispatcherThreadingProfile();
-
-   ThreadingProfile getDefaultMessageRequesterThreadingProfile();
-
-   ThreadingProfile getDefaultMessageReceiverThreadingProfile();
-
-   ThreadingProfile getDefaultServiceThreadingProfile();
-
-   ThreadingProfile getDefaultThreadingProfile();
 
    /**
     * Returns the configured {@link org.mule.api.util.StreamCloserService}
@@ -230,12 +156,6 @@ public interface MuleContext extends Lifecycle
    void removeRegistry(Registry registry);
 
    /**
-    * Returns the date when the server was started.
-    * @return the date when the server was started.
-    */
-   long getStartDate();
-
-   /**
     * Returns the Expression Manager configured for this instance of Mule
     * @return the Expression Manager configured for this instance of Mule
     * @see org.mule.api.expression.ExpressionManager
@@ -252,12 +172,6 @@ public interface MuleContext extends Lifecycle
    void setExecutionClassLoader(ClassLoader cl);
 
    ClassLoader getExecutionClassLoader();
-
-   boolean isStopped();
-
-   boolean isStopping();
-
-   boolean isStarting();
 
    LocalMuleClient getClient();
 
