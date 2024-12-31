@@ -14,7 +14,7 @@ class DeviceClientTest {
         System.setOut(new PrintStream(outputStream));
 
         DeviceClient client = new DeviceClient();
-        client.usedDevices();
+        client.useDevices();
 
         System.setOut(originalOut);
 

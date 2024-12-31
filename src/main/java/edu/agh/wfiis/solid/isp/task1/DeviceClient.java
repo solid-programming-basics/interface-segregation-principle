@@ -10,7 +10,7 @@ class DeviceClient {
             new MultiFunctionOfficeDevice()
     );
 
-    void usedDevices(){
+    void useDevices(){
         for (OfficeDevice device : DEVICES) {
             System.out.println("Using device: " + device.getClass().getSimpleName());
 
@@ -33,6 +33,6 @@ class DeviceClient {
     }
     public static void main(String[] args) {
         var client = new DeviceClient();
-        client.usedDevices();
+        client.useDevices();
     }
 }
